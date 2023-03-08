@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import Feed from "./layouts/Feed";
+import Feed from "./pages/Feed";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./themes/theme";
