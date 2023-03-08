@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React, { useRef, useState } from "react";
 import FeedView from "../Feed/Feed";
 
@@ -38,7 +38,12 @@ export default function MainPanel() {
   }, [resize, stopResizing]);
 
   return (
-    <Flex flexDirection="row-reverse" flexGrow="1">
+    <Flex flex="1">
+      {/* main feed */}
+      <Flex flex="1">
+        <FeedView></FeedView>
+      </Flex>
+      {/* sidebar */}
       <Flex
         ref={sidebarRef}
         minWidth="340px"
@@ -49,7 +54,7 @@ export default function MainPanel() {
         boxShadow={"variant_2"}
         width={sidebarWidth}
       >
-        <Flex
+        <Box
           width="8px"
           height="100vh"
           borderRadius="2xl"
@@ -58,10 +63,7 @@ export default function MainPanel() {
           resize="horizontal"
           _hover={{ bg: "#c1c3c5b4" }}
         />
-        <Flex flexGrow="1"></Flex>
-      </Flex>
-      <Flex flexGrow="1">
-        <FeedView></FeedView>
+        <Flex flex="1">Thread</Flex>
       </Flex>
     </Flex>
   );

@@ -24,7 +24,7 @@ function Sidebar(props: SidebarProps) {
       borderRightRadius="2xl"
       bg="white"
       top="0"
-      h="calc(100vh)"
+      h="100vh"
       width={{ xl: "210px", lg: "80px" }}
     >
       <Flex alignItems={"center"} justifyContent={"center"} py="24px">
