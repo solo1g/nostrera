@@ -1,9 +1,8 @@
-import { Box } from "@chakra-ui/react";
+import Sidebar from "../components/Sidebar/Sidebar";
+import routes from "../components/Sidebar/SidebarRoutes";
 
-interface FeedProps {}
-
-const Feed = (_: FeedProps) => {
-  return <Box>Feed</Box>;
+const Feed = () => {
+  return <Sidebar routes={routes}></Sidebar>;
 };
 
 export default Feed;
