@@ -40,11 +40,10 @@ export default function MainPanel() {
   return (
     <Flex flex="1">
       {/* main feed */}
-      <Flex flex="1">
-        <FeedView></FeedView>
-      </Flex>
+      <FeedPanel></FeedPanel>
       {/* sidebar */}
       <Flex
+        display={{ base: "none", md: "flex" }}
         ref={sidebarRef}
         minWidth="340px"
         maxWidth="600px"
@@ -65,6 +64,14 @@ export default function MainPanel() {
         />
         <Flex flex="1">Thread</Flex>
       </Flex>
+    </Flex>
+  );
+}
+
+function FeedPanel() {
+  return (
+    <Flex flex="1">
+      <FeedView></FeedView>
     </Flex>
   );
 }

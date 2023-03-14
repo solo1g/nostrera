@@ -8,7 +8,7 @@ import {
   useBreakpointValue,
   Spacer,
 } from "@chakra-ui/react";
-import { MustNotBeRendered } from "../../utils/MustNotBeRendered";
+import { MustNotBeRendered } from "../../../utils/MustNotBeRendered";
 
 interface SidebarItemProps {
   isActive: boolean;

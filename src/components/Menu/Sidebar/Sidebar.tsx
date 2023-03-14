@@ -1,24 +1,20 @@
 import { Box, Flex, Text, useBreakpointValue } from "@chakra-ui/react";
-import SidebarContent from "./SidebarContent";
 
 import "@fontsource/pacifico/400.css";
-import { Separator } from "../Separator/Separator";
+import { MenuBarProps, MenuItemProps } from "../menuItems";
+import { Separator } from "../../Separator/Separator";
+import SidebarContent from "./SidebarContent";
 
-interface SidebarProps {
-  routes: any;
-}
-
-function Sidebar(props: SidebarProps) {
-  const { routes } = props;
+function Sidebar(props: MenuBarProps) {
+  const { logoText, routes } = props;
 
   const logo = useBreakpointValue({
-    base: "N",
-    xl: "Nostrera",
+    base: logoText.substring(0, 1),
+    xl: logoText,
   });
 
   return (
     <Box
-      display={{ base: "none", lg: "block" }}
       position="sticky"
       boxShadow={"variant_2"}
       borderRightRadius="2xl"

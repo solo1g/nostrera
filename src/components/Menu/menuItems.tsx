@@ -2,8 +2,20 @@ import { HiHome } from "react-icons/hi";
 import { IoMdGlobe, IoMdNotifications } from "react-icons/io";
 import { RiSettings3Fill } from "react-icons/ri";
 import { MdMessage } from "react-icons/md";
+import { IconType } from "react-icons";
 
-const routes = [
+export interface MenuItemProps {
+  path: string;
+  name: string;
+  icon: IconType;
+}
+
+export interface MenuBarProps {
+  logoText: string;
+  routes: MenuItemProps[];
+}
+
+const menuItems: MenuItemProps[] = [
   {
     path: "/",
     name: "My Feed",
@@ -31,4 +43,4 @@ const routes = [
   },
 ];
 
-export default routes;
+export default menuItems;

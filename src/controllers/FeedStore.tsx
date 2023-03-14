@@ -21,7 +21,7 @@ export class FeedStore {
     this.sub = this.pool.sub(this.relays, [
       {
         kinds: [Kind.Text],
-        limit: 100,
+        limit: 10,
       },
     ]);
 
