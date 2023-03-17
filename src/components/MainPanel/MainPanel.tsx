@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Show } from "@chakra-ui/react";
 import React, { useRef, useState } from "react";
 import FeedView from "../Feed/Feed";
 
@@ -42,28 +42,29 @@ export default function MainPanel() {
       {/* main feed */}
       <FeedPanel></FeedPanel>
       {/* sidebar */}
-      <Flex
-        display={{ base: "none", md: "flex" }}
-        ref={sidebarRef}
-        minWidth="340px"
-        maxWidth="600px"
-        position="sticky"
-        top="0"
-        height="100vh"
-        boxShadow={"variant_2"}
-        width={sidebarWidth}
-      >
-        <Box
-          width="8px"
+      <Show above="md">
+        <Flex
+          ref={sidebarRef}
+          minWidth="340px"
+          maxWidth="600px"
+          position="sticky"
+          top="0"
           height="100vh"
-          borderRadius="2xl"
-          onMouseDown={startResizing}
-          cursor="col-resize"
-          resize="horizontal"
-          _hover={{ bg: "#c1c3c5b4" }}
-        />
-        <Flex flex="1">Thread</Flex>
-      </Flex>
+          boxShadow={"variant_2"}
+          width={sidebarWidth}
+        >
+          <Box
+            width="8px"
+            height="100vh"
+            borderRadius="2xl"
+            onMouseDown={startResizing}
+            cursor="col-resize"
+            resize="horizontal"
+            _hover={{ bg: "#c1c3c5b4" }}
+          />
+          <Flex flex="1">Thread</Flex>
+        </Flex>
+      </Show>
     </Flex>
   );
 }
@@ -71,7 +72,8 @@ export default function MainPanel() {
 function FeedPanel() {
   return (
     <Flex flex="1">
-      <FeedView></FeedView>
+      {" "}
+      <FeedView></FeedView>{" "}
     </Flex>
   );
 }

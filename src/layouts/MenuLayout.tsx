@@ -9,7 +9,7 @@ import { PropsWithChildren } from "react";
 import Logo from "../components/Logo/Logo";
 import menuItems from "../components/Menu/menuItems";
 import Sidebar, { SideBarVariant } from "../components/Menu/Sidebar/Sidebar";
-// import TopBar from "../components/Menu/TopBar/TopBar";
+import TopBar from "../components/Menu/TopBar/TopBar";
 
 function WithMenuLayout(props: PropsWithChildren) {
   const menuProps = {
@@ -21,17 +21,11 @@ function WithMenuLayout(props: PropsWithChildren) {
 
   if (mobile) {
     return (
-      <Flex>
-        <Sidebar variant={SideBarVariant.FLOATING} {...menuProps}></Sidebar>
+      <>
+        <TopBar {...menuProps}></TopBar>
         {props.children}
-      </Flex>
+      </>
     );
-    // return (
-    //   <>
-    //     <TopBar {...menuProps}></TopBar>
-    //     {props.children}
-    //   </>
-    // );
   }
 
   return (

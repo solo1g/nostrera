@@ -51,10 +51,17 @@ function Sidebar(props: SidebarProps) {
       direction="column"
       overflow="auto"
     >
-      <Flex alignItems={"center"} justifyContent={"center"} pt="8">
-        <Logo />
-      </Flex>
-      <Separator spacing={8} />
+      {variant === SideBarVariant.FIXED && (
+        <>
+          <Flex alignItems={"center"} justifyContent={"center"} pt="8">
+            <Logo />
+          </Flex>
+          <Separator spacing={8} />
+        </>
+      )}
+
+      {variant === SideBarVariant.FLOATING && <Box height="4"></Box>}
+
       <SidebarContent routes={routes} />
     </Flex>
   );

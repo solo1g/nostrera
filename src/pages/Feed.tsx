@@ -4,7 +4,11 @@ import MainPanel from "../components/MainPanel/MainPanel";
 import WithMenuLayout from "../layouts/MenuLayout";
 
 const Feed = () => {
-  return <WithMenuLayout>{/* <MainPanel></MainPanel> */}</WithMenuLayout>;
+  return (
+    <WithMenuLayout>
+      <MainPanel></MainPanel>
+    </WithMenuLayout>
+  );
 };
 
 export default Feed;
