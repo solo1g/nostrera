@@ -1,12 +1,19 @@
-import { Flex, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Drawer,
+  DrawerCloseButton,
+  DrawerOverlay,
+  Flex,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
+import Logo from "../components/Logo/Logo";
 import menuItems from "../components/Menu/menuItems";
-import Sidebar from "../components/Menu/Sidebar/Sidebar";
-import TopBar from "../components/Menu/TopBar/TopBar";
+import Sidebar, { SideBarVariant } from "../components/Menu/Sidebar/Sidebar";
+// import TopBar from "../components/Menu/TopBar/TopBar";
 
-function MenuLayout(props: PropsWithChildren) {
+function WithMenuLayout(props: PropsWithChildren) {
   const menuProps = {
-    logoText: "Nostrera",
+    logo: Logo(),
     routes: menuItems,
   };
 
@@ -14,20 +21,25 @@ function MenuLayout(props: PropsWithChildren) {
 
   if (mobile) {
     return (
-      <>
-        <TopBar {...menuProps}></TopBar>
+      <Flex>
+        <Sidebar variant={SideBarVariant.FLOATING} {...menuProps}></Sidebar>
         {props.children}
-      </>
+      </Flex>
     );
+    // return (
+    //   <>
+    //     <TopBar {...menuProps}></TopBar>
+    //     {props.children}
+    //   </>
+    // );
   }
 
   return (
     <Flex>
-      <Sidebar {...menuProps}></Sidebar>
-
+      <Sidebar variant={SideBarVariant.FIXED} {...menuProps}></Sidebar>
       {props.children}
     </Flex>
   );
 }
 
-export default MenuLayout;
+export default WithMenuLayout;

@@ -1,36 +1,62 @@
-import { Box, Flex, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, Text, useBreakpointValue, VStack } from "@chakra-ui/react";
 
 import "@fontsource/pacifico/400.css";
 import { MenuBarProps, MenuItemProps } from "../menuItems";
 import { Separator } from "../../Separator/Separator";
 import SidebarContent from "./SidebarContent";
+import Logo from "../../Logo/Logo";
 
-function Sidebar(props: MenuBarProps) {
-  const { logoText, routes } = props;
+export enum SideBarVariant {
+  FIXED = "fixed",
+  FLOATING = "floating",
+}
 
-  const logo = useBreakpointValue({
-    base: logoText.substring(0, 1),
-    xl: logoText,
-  });
+interface SidebarProps extends MenuBarProps {
+  width: number;
+  borderRadius: number;
+  variant: SideBarVariant;
+  marginTopPx?: string;
+}
+
+Sidebar.defaultProps = {
+  width: { base: 40, lg: 20, xl: 200 },
+  borderRadius: { base: "2xl" },
+};
+
+function Sidebar(props: SidebarProps) {
+  const { routes, width, borderRadius, variant } = props;
+
+  const marginBottomPx = variant === SideBarVariant.FLOATING ? "32px" : "0px";
+  const marginTopPx = props.marginTopPx ?? marginBottomPx;
 
   return (
-    <Box
+    <Flex
+      //base
       position="sticky"
-      boxShadow={"variant_2"}
-      borderRightRadius="2xl"
-      bg="white"
       top="0"
-      h="100vh"
-      width={{ xl: "210px", lg: "80px" }}
+      boxShadow={"variant_2"}
+      boxSizing="border-box"
+      bg="white"
+      //borders
+      borderRightRadius={variant == SideBarVariant.FIXED ? borderRadius : ""}
+      borderRadius={variant == SideBarVariant.FLOATING ? borderRadius : ""}
+      //martings
+      marginLeft={variant == SideBarVariant.FLOATING ? 6 : 0}
+      marginBottom={marginBottomPx}
+      marginTop={marginTopPx}
+      //sizes
+      //wierd but you need to give space for the separator
+      h={`calc(100vh - ${marginBottomPx} - ${marginTopPx})`}
+      width={width}
+      direction="column"
+      overflow="auto"
     >
-      <Flex alignItems={"center"} justifyContent={"center"} py="24px">
-        <Text fontSize="2rem" fontFamily="Pacifico">
-          {logo}
-        </Text>
+      <Flex alignItems={"center"} justifyContent={"center"} pt="8">
+        <Logo />
       </Flex>
-      <Separator></Separator>
+      <Separator spacing={8} />
       <SidebarContent routes={routes} />
-    </Box>
+    </Flex>
   );
 }
 

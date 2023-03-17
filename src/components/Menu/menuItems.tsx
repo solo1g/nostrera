@@ -3,7 +3,9 @@ import { IoMdGlobe, IoMdNotifications } from "react-icons/io";
 import { RiSettings3Fill } from "react-icons/ri";
 import { MdMessage } from "react-icons/md";
 import { IconType } from "react-icons";
+import { ReactNode } from "react";
 
+//rename as label, href, icon
 export interface MenuItemProps {
   path: string;
   name: string;
@@ -11,7 +13,7 @@ export interface MenuItemProps {
 }
 
 export interface MenuBarProps {
-  logoText: string;
+  logo: ReactNode;
   routes: MenuItemProps[];
 }
 

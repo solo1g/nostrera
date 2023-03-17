@@ -105,7 +105,7 @@ export default function SidebarItem(props: SidebarItemProps): JSX.Element {
 
   //todo: there's got to be better way to do this
   const child = useBreakpointValue({
-    md: SideBarItemL,
+    base: SideBarItemXl,
     xl: SideBarItemXl,
   });
 

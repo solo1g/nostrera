@@ -28,11 +28,7 @@ const SidebarContent = ({ routes }: SidebarContentProps) => {
     });
   };
 
-  return (
-    <Box pl={{ base: "0", lg: "calc(16%)", xl: "12px" }} pt="24px">
-      <VStack>{sidebarItemList(routes)}</VStack>
-    </Box>
-  );
+  return <VStack pl="2">{sidebarItemList(routes)}</VStack>;
 };
 
 export default SidebarContent;
