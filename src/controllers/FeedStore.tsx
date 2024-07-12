@@ -20,8 +20,11 @@ export class FeedStore {
     this.pool = new SimplePool();
     this.sub = this.pool.sub(this.relays, [
       {
+        authors: [
+          "e5177ebf513530c2d0924083b64b7eadd7fb85efcc3e4dfb55c73a924c901ca7",
+        ],
         kinds: [Kind.Text],
-        limit: 10,
+        limit: 100,
       },
     ]);
 
